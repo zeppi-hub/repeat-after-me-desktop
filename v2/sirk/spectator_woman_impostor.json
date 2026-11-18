@@ -1,0 +1,6 @@
+{
+ "width_m": 0.655,
+ "height_m": 1.31,
+ "seat_from_bottom_m": 0.43,
+ "note": "picture 256 x 512 px covers width_m x height_m; the seat (origin) is seat_from_bottom_m above its bottom edge"
+}

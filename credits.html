@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Every Window Lit · Data and credits</title>
+    <style>
+      body { margin: 0; background: #f3ead8; color: #2e2620; font-family: Georgia, 'Times New Roman', serif; line-height: 1.55; }
+      main { max-width: 46em; margin: 0 auto; padding: 32px 16px 56px; }
+      h1 { font-weight: normal; font-size: 30px; margin: 0 0 8px; }
+      h2 { font-weight: normal; font-size: 21px; margin: 32px 0 8px; }
+      p, li { font-size: 16px; }
+      li { margin-bottom: 10px; }
+      a { color: #6a3a22; }
+      small { color: #6a5d4d; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Every Window Lit · Data and credits</h1>
+      <p>
+        Season 1 replays real weekly and monthly price moves from public data for Italy, Spain, Germany and the US
+        (Jan 2023 to Dec 2025).
+        The town and everyone in it are fictional. World effects are scaled to each series' 2023–2026 range so they
+        can be seen. Simplified game model, not policy advice.
+      </p>
+      <p>
+        Each in-game week shows one real period: a week for pump and wholesale power prices, a month for grocery
+        prices. The game ships only the derived numbers: one percentage change per period, how it compares with the
+        series' other changes, the next period's change (to settle the Sunday call) and a few changes before it.
+      </p>
+
+      <h2>Data</h2>
+      <ul>
+        <li>
+          <strong>Pump prices, Italy.</strong> Fonte: Ministero dell'ambiente e della sicurezza energetica – Direzione generale
+          fonti energetiche e titoli abilitativi, prezzi medi settimanali dei carburanti
+          (<a href="https://sisen.mase.gov.it/dgsaie/">sisen.mase.gov.it</a>), accessed 31 Oct 2026, licensed
+          <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+          Changed: weekly percentage changes of the mean of Euro-super 95 and diesel prices, computed for the game.
+        </li>
+        <li>
+          <strong>Pump prices, US.</strong> Source: U.S. Energy Information Administration (3 Nov 2026), Weekly U.S.
+          Regular All Formulations Retail Gasoline Prices
+          (<a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=EMM_EPMR_PTE_NUS_DPG&amp;f=W">eia.gov</a>),
+          accessed 6 Nov 2026, <a href="https://www.eia.gov/about/copyrights_reuse.php">public domain</a>. Changed:
+          weekly percentage changes, computed for the game.
+        </li>
+        <li>
+          <strong>Wholesale power prices, Italy, Spain and Germany.</strong> Ember, European Wholesale Electricity Price Data
+          (<a href="https://ember-energy.org/data/european-wholesale-electricity-price-data/">ember-energy.org</a>),
+          accessed 31 Oct 2026, licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>;
+          Ember's hourly source is the ENTSO-E Transparency Platform. Changed: weekly averages of daily
+          day-ahead prices and their percentage changes, computed for the game.
+        </li>
+        <li>
+          <strong>Grocery prices, Italy.</strong> Fonte: Istat, Prezzi al consumo per l'intera collettività (NIC), "beni
+          alimentari, per la cura della casa e della persona" (carrello della spesa), dataflow
+          167_745_DF_DCSP_NIC1B2025_6 (<a href="https://esploradati.istat.it/">esploradati.istat.it</a>), accessed
+          31 Oct 2026, licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Used as
+          published: percentage change on the previous month, each shown as one in-game week; provisional months left
+          out.
+        </li>
+        <li>
+          <strong>Grocery prices, Spain.</strong> Source: Eurostat,
+          <a href="https://doi.org/10.2908/PRC_HICP_MINR">doi.org/10.2908/PRC_HICP_MINR</a>, accessed 6 Nov 2026: HICP
+          monthly index, food and non-alcoholic beverages, licensed
+          <a href="https://ec.europa.eu/eurostat/help/copyright-notice">CC BY 4.0</a>. Changed: monthly percentage
+          changes of the index, computed for the game, each shown as one in-game week. Eurostat has no responsibility
+          for these changes or for the game.
+        </li>
+        <li>
+          <strong>Grocery prices, US.</strong> Source: U.S. Bureau of Labor Statistics, Consumer Price Index for All
+          Urban Consumers, food at home, U.S. city average, not seasonally adjusted
+          (<a href="https://data.bls.gov/timeseries/CUUR0000SAF11">bls.gov</a>), accessed 6 Nov 2026,
+          <a href="https://www.bls.gov/opub/copyright-information.htm">public domain</a>. Changed: monthly percentage
+          changes of the index, computed for the game, each shown as one in-game week; September to December 2025 left
+          out (October was never collected). BLS.gov cannot vouch for the
+          data or analyses derived from these data after the data have been retrieved from BLS.gov.
+        </li>
+        <li>
+          <strong>Disaster check, US.</strong> This product uses the Federal Emergency Management Agency's OpenFEMA
+          API, but is not endorsed by FEMA. The Federal Government or FEMA cannot vouch for the data or analyses derived
+          from these data after the data have been retrieved from the Agency's website(s). Dataset:
+          <a href="https://www.fema.gov/api/open/v1/FemaWebDisasterDeclarations">FemaWebDisasterDeclarations v1</a>,
+          accessed 6 Nov 2026. Used only to keep the US weeks away from disasters; none of it ships with the game.
+        </li>
+        <li>
+          <strong>Weather.</strong> The data was obtained from the National Aeronautics and Space Administration
+          (NASA) Langley Research Center (LaRC) Prediction Of Worldwide Energy Resources (POWER) Project funded
+          through the NASA Earth Science Division (<a href="https://power.larc.nasa.gov/">power.larc.nasa.gov</a>).
+          POWER Daily API v2.10.1, point near Naples, accessed 31 Oct 2026.
+        </li>
+      </ul>
+      <p><small>No source endorses this game, and no source's logo is used.</small></p>
+
+      <h2>Weeks that overlap real disasters</h2>
+      <p>
+        One week is about a real flood on the mainland. The game names the place in a letter and the month on the week's card, shows no damage or injuries, and lets the island respond only with help. It can be switched off on the start page.
+      </p>
+
+      <h2>Sound</h2>
+      <p>
+        Sounds from <a href="https://kenney.nl/">Kenney</a> (RPG Audio, Impact Sounds, Interface Sounds), CC0. The
+        town's sea, wind, traffic and market murmur are made in code.
+      </p>
+
+      <h2>Textures and sky</h2>
+      <p>
+        From <a href="https://polyhaven.com/">Poly Haven</a>, CC0: painted plaster wall, roof 09, cobblestone floor 08,
+        large sandstone blocks 01, medieval blocks 02, wood shutter, terracotta floor tiles, roof planks, red brick 03,
+        white sandstone blocks 02, concrete floor 02, kloofendal 48d partly cloudy (pure sky).
+      </p>
+
+      <h2>Models</h2>
+      <p>
+        Parked cars, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>:
+        <a href="https://sketchfab.com/3d-models/historical-car-16be52ed0f3f4a06a3f10e2ed5db8f0f">Historical Car</a> by coffeecat,
+        <a href="https://sketchfab.com/3d-models/archive-sm-retro-car-01-a-755a494feac543f198fc5acdcc7d3f61">SM Retro Car 01 A</a> by sanyabeast and
+        <a href="https://sketchfab.com/3d-models/draftpunk-hw6-detailed-1-a2916e544eba4b19b76b454fb0a638c5">a light truck</a> by sipabyss.
+        <a href="https://sketchfab.com/3d-models/the-old-fountain-free-dd7909ffc4a84a45b3111030c51e43c6">The Old Fountain</a> by Shaddy, CC BY 4.0.
+        <a href="https://sketchfab.com/3d-models/low-poly-vintage-bicycle-model-5297f7525763435c8ef2e97fd3a6d30d">Vintage bicycle</a>
+        by wasabicats, CC BY 4.0. Changed for the game: fewer triangles, smaller textures, all materials baked into one
+        texture, badges and text removed, resized, normals and UVs stored at lower precision.
+      </p>
+      <p>
+        CC0: the townsfolk, from the
+        <a href="https://quaternius.com/packs/ultimatedanimatedcharacter.html">Ultimate Animated Character Pack</a> by
+        Quaternius (Man in Suit, Woman in Dress; their colours vary and their wave is made in code); the tower key, a scan of a
+        <a href="https://sketchfab.com/3d-models/key-from-the-graveyard-in-zakrzowek-c0cce9f9b07c4003915539e20d8ca050">key from
+        Zakrzówek</a> by Virtual Museums of Małopolska; and from <a href="https://polyhaven.com/">Poly Haven</a> the
+        Sunday lamp (Lantern 01, Rajil Jose Macatangay), the basket (Wicker Basket 01, Kuutti Siitonen) and the benches (Modular Street Seating,
+        Stuart Attenborrow).
+      </p>
+      <p>
+        The Keeper's hands and controllers: <a href="https://www.npmjs.com/package/@webxr-input-profiles/assets">WebXR Input Profiles</a>
+        (@webxr-input-profiles/assets, MIT, Copyright (c) 2019 Amazon), loaded from jsDelivr while the game runs, recoloured
+        in code, with a coat cuff added at the wrist.
+      </p>
+
+      <h2>Software</h2>
+      <p>
+        Built with <a href="https://iwsdk.dev/">Immersive Web SDK</a> (MIT) and
+        <a href="https://threejs.org/">three.js</a> (MIT), with elics, pmndrs uikit and pointer events, Preact signals,
+        three-mesh-bvh, yoga-layout, comlink (Apache 2.0), entities (BSD 2-Clause), Lucide icons (ISC), zod and the
+        Basis Universal texture transcoder (Apache 2.0). Every licence notice is in
+        <a href="third-party-notices.txt">third-party notices</a>.
+      </p>
+    </main>
+  </body>
+</html>

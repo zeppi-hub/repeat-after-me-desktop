@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#efe7d6" />
+    <link rel="icon" href="data:," />
+    <title>Repeat After Me</title>
+    <link rel="preload" href="./fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/unifrakturcook-700.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      /* The start page: this morning's front page, corrected in red ink. The type is served from the game's own folder (public/fonts, SIL Open Font License). */
+      @font-face { font-family: 'UnifrakturCook'; font-weight: 700; font-display: swap; src: url('fonts/unifrakturcook-700.woff2') format('woff2'); }
+      @font-face { font-family: 'Playfair Display'; font-weight: 400 900; font-display: swap; src: url('fonts/playfair-display.woff2') format('woff2'); }
+      @font-face { font-family: 'Old Standard TT'; font-weight: 400; font-display: swap; src: url('fonts/old-standard-400.woff2') format('woff2'); }
+      @font-face { font-family: 'Old Standard TT'; font-weight: 400; font-style: italic; font-display: swap; src: url('fonts/old-standard-400-italic.woff2') format('woff2'); }
+      @font-face { font-family: 'Old Standard TT'; font-weight: 700; font-display: swap; src: url('fonts/old-standard-700.woff2') format('woff2'); }
+      @font-face { font-family: 'Oswald'; font-weight: 200 700; font-display: swap; src: url('fonts/oswald.woff2') format('woff2'); }
+      @font-face { font-family: 'Caveat Brush'; font-weight: 400; font-display: swap; src: url('fonts/caveat-brush-400.woff2') format('woff2'); }
+      :root {
+        --ink: #1b1712;
+        --paper: #efe7d6;
+        --red: #b3202e;
+        --rule: rgba(27, 23, 18, 0.85);
+        --serif: 'Old Standard TT', Georgia, 'Times New Roman', serif;
+        --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+        --hand: 'Caveat Brush', 'Bradley Hand', 'Segoe Print', cursive;
+        --stamp: 'Oswald', 'Arial Narrow', Impact, sans-serif;
+      }
+      html, body { height: 100%; }
+      body { margin: 0; background: #14110d; font-family: var(--serif); }
+      #landing {
+        position: fixed; inset: 0; overflow: hidden auto; color: var(--ink);
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(90deg, rgba(27, 23, 18, 0.1), transparent 5%, transparent 95%, rgba(27, 23, 18, 0.1)),
+          radial-gradient(rgba(27, 23, 18, 0.045) 1px, transparent 1px);
+        background-size: 100% 100%, 3px 3px;
+      }
+      #landing[hidden] { display: none; }
+      #landing * { box-sizing: border-box; }
+      .sheet { max-width: 1180px; margin: 0 auto; padding: clamp(6px, 1.2vh, 18px) clamp(14px, 2.6vw, 30px) clamp(8px, 1.4vh, 22px); }
+
+      .mast { margin: 0; text-align: center; font: 700 clamp(34px, min(7vw, 8.4vh), 80px)/1 'UnifrakturCook', var(--display); padding: 2px 0 clamp(4px, 0.8vh, 8px); }
+      .dateline {
+        display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0; padding: 5px 2px;
+        font-size: clamp(10px, 1.2vw, 12.5px); letter-spacing: 0.08em; text-transform: uppercase;
+        border-top: 3px double var(--ink); border-bottom: 3px double var(--ink);
+      }
+      .dateline b { letter-spacing: 0.16em; }
+
+      /* The headline the day was heading for, struck out by hand, and the answer written beside it. */
+      .banner { display: flex; align-items: center; justify-content: center; gap: clamp(8px, 1.6vw, 22px); margin: clamp(6px, 1.5vh, 18px) 0 clamp(2px, 0.5vh, 6px); }
+      .banner h1 {
+        position: relative; margin: 0; white-space: nowrap; font: 900 clamp(28px, min(6.1vw, 11.5vh), 76px)/0.95 var(--display);
+        letter-spacing: -0.005em; text-transform: uppercase; color: var(--ink);
+      }
+      .banner h1 svg { position: absolute; left: -3%; top: -10%; width: 106%; height: 120%; overflow: visible; pointer-events: none; }
+      .banner h1 path { fill: none; stroke: var(--red); stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.92; animation: ink 0.5s cubic-bezier(0.5, 0, 0.3, 1) 0.7s backwards; }
+      .banner h1 path + path { opacity: 0.8; animation: ink-back 0.4s cubic-bezier(0.5, 0, 0.3, 1) 1.15s backwards; }
+      @keyframes ink { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+      @keyframes ink-back { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+      .banner .hand {
+        margin: 0; flex: none; font: 400 clamp(26px, min(5vw, 8.6vh), 60px)/0.86 var(--hand); color: var(--red); text-align: center;
+        margin-block: -0.44em -0.16em; transform: rotate(-7deg); animation: written 0.45s ease-out 1.6s backwards;
+      }
+      .banner .hand u { text-decoration: none; background: linear-gradient(var(--red), var(--red)) 0 100% / 100% 3px no-repeat; padding-bottom: 2px; }
+      @keyframes written { from { opacity: 0; transform: rotate(-7deg) scale(1.12); } }
+      .deck { margin: 0 0 clamp(8px, 1.6vh, 16px); text-align: center; font-style: italic; font-size: clamp(16px, min(2.1vw, 3.4vh), 24px); line-height: 1.25; text-wrap: balance; }
+
+      .grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(14px, 2vw, 24px); border-top: 1px solid var(--rule); padding-top: clamp(8px, 1.4vh, 14px); }
+      .grid > div { min-width: 0; }
+      /* The photograph: black and white, printed in dots, and the bird ringed in the same red ink. */
+      figure { margin: 0; }
+      .photo { position: relative; overflow: hidden; background: #fbf6ea; aspect-ratio: 16 / 9; max-height: min(36.5vh, 520px); width: 100%; }
+      .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; filter: grayscale(1) contrast(1.32) brightness(1.06); mix-blend-mode: multiply; }
+      .photo::after {
+        content: ''; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+        background-image: radial-gradient(rgba(239, 231, 214, 0.55) 0.9px, transparent 1.4px); background-size: 4px 4px;
+      }
+      .photo .you { position: absolute; z-index: 1; left: 38.3%; top: 32%; width: 16.5%; aspect-ratio: 0.72; transform: translate(-50%, -50%) rotate(-6deg); pointer-events: none; }
+      .photo .you svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+      .photo .you path { fill: none; stroke: var(--red); stroke-width: 3.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+      .photo .you span { position: absolute; right: 104%; top: -14%; font: 400 clamp(22px, 3.4vw, 42px)/1 var(--hand); color: var(--red); transform: rotate(-4deg); text-shadow: 0 0 6px var(--paper), 0 0 2px var(--paper); }
+      figcaption { margin: 0; padding: 6px 0 8px; font-size: clamp(12.5px, 1.25vw, 14px); line-height: 1.3; font-style: italic; border-bottom: 1px solid var(--rule); }
+      figcaption b { font-style: normal; }
+
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; list-style: none; counter-reset: step; }
+      .steps li { counter-increment: step; padding: clamp(6px, 1.1vh, 10px) 12px; border-right: 1px solid var(--rule); font-size: clamp(14px, 1.35vw, 16px); line-height: 1.3; }
+      .steps li:first-child { padding-left: 0; }
+      .steps li:last-child { border-right: 0; padding-right: 0; }
+      .steps li::before { content: counter(step); display: block; font: 900 clamp(20px, 2.2vw, 28px)/1.05 var(--display); }
+      .steps .win::before { color: var(--red); }
+
+      .story h2 { margin: 0 0 4px; font: 900 clamp(26px, min(3vw, 5vh), 36px)/1.05 var(--display); }
+      .byline { margin: 0 0 clamp(5px, 1vh, 9px); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+      .story p.body { margin: 0 0 clamp(6px, 1.1vh, 10px); font-size: clamp(14.5px, min(1.4vw, 2.5vh), 17px); line-height: 1.4; text-align: justify; hyphens: auto; }
+      .byline + p.body::first-letter { float: left; font: 900 3.1em/0.8 var(--display); padding: 0.06em 0.1em 0.08em 0; }
+      .story p.body b { font-weight: 700; }
+      .markets { border: 1px solid var(--rule); padding: 6px 10px 7px; font-size: clamp(12.5px, 1.2vw, 14px); line-height: 1.38; margin-top: clamp(6px, 1.2vh, 12px); }
+      .markets h3 { margin: 0 0 3px; padding-bottom: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--rule); }
+      .markets dl { margin: 0; display: grid; grid-template-columns: auto 1fr auto 1fr; column-gap: 10px; font-variant-numeric: tabular-nums; }
+      .markets dd:nth-of-type(odd) { padding-right: 14px; margin-right: 4px; border-right: 1px solid var(--rule); }
+      .markets dt { letter-spacing: 0.1em; text-transform: uppercase; }
+      .markets dd { margin: 0; text-align: right; }
+      .markets .down { color: var(--red); }
+      .markets .lit { font-style: italic; }
+
+      /* The way in: a rubber stamp. It stays in reach at the foot of its column when the page is taller than the window. */
+      .enter {
+        position: sticky; bottom: 0; z-index: 2; text-align: center; margin-top: clamp(2px, 0.6vh, 8px); padding: clamp(8px, 1.5vh, 16px) 0 2px;
+        background: linear-gradient(rgba(239, 231, 214, 0), var(--paper) 16px);
+      }
+      #enter-vr {
+        position: relative; display: inline-block; cursor: pointer; transform: rotate(-4deg);
+        font: 700 clamp(26px, min(3.2vw, 5.6vh), 38px)/1 var(--stamp); letter-spacing: 0.12em; text-transform: uppercase; text-indent: 0.12em;
+        min-width: min(74vw, 250px); padding: 9px 30px 11px; border: 4px solid var(--red); border-radius: 7px; color: var(--red);
+        background: rgba(179, 32, 46, 0.05); box-shadow: inset 0 0 0 2px rgba(179, 32, 46, 0.28), 0 0 0 0 rgba(179, 32, 46, 0);
+        transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.2s ease;
+      }
+      #enter-vr:hover:not(:disabled) { background: var(--red); color: var(--paper); transform: rotate(-4deg) scale(1.04); box-shadow: inset 0 0 0 2px rgba(239, 231, 214, 0.5), 0 8px 22px rgba(179, 32, 46, 0.35); }
+      #enter-vr:active:not(:disabled) { transform: rotate(-4deg) scale(0.97); }
+      #enter-vr:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+      /* Ready: the ink is fresh, and it shows. */
+      #enter-vr[data-state='ready'] { animation: fresh 2.6s ease-in-out infinite; }
+      @keyframes fresh { 50% { box-shadow: inset 0 0 0 2px rgba(179, 32, 46, 0.28), 0 0 0 9px rgba(179, 32, 46, 0.13); } }
+      #enter-vr:disabled { cursor: default; color: rgba(27, 23, 18, 0.62); border-color: rgba(27, 23, 18, 0.5); border-style: dashed; background: transparent; box-shadow: none; }
+      /* While the square loads: the stamp is still being inked. */
+      #enter-vr[data-state='loading'] { animation: inking 1.4s ease-in-out infinite; }
+      @keyframes inking { 50% { opacity: 0.45; } }
+      .under { margin: clamp(7px, 1.2vh, 12px) 0 0; font-size: clamp(11px, 1.15vw, 12.5px); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
+      .foot {
+        display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 22px; margin-top: clamp(8px, 1.4vh, 14px); padding-top: 7px;
+        border-top: 3px double var(--ink); font-size: 14px; line-height: 1.35;
+      }
+      #landing-note { display: block; margin-top: 3px; font-style: italic; font-size: 14px; line-height: 1.3; }
+      /* No headset here: the reason stands out under the stamp. */
+      #enter-vr[data-state='blocked'] ~ #landing-note { font-weight: 700; font-style: normal; color: var(--red); font-size: 15px; }
+      .comfort { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+      .comfort label { display: inline-flex; gap: 7px; align-items: center; cursor: pointer; }
+      .comfort input { accent-color: var(--red); width: 16px; height: 16px; margin: 0; }
+      .comfort input:focus-visible, .foot a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+      .foot a { color: var(--ink); }
+
+      @media (max-width: 760px) {
+        .dateline span { display: none; }
+        .dateline { justify-content: center; }
+        .banner { flex-direction: column; gap: 0; }
+        .banner h1 { font-size: min(8.8vw, 60px); }
+        .banner .hand { font-size: min(11vw, 66px); align-self: flex-end; margin: -0.16em 3% 0 0; }
+        .banner .hand br { display: none; }
+        .deck { margin-top: 1.5em; }
+        .grid { grid-template-columns: 1fr; }
+        .photo { max-height: none; }
+        .steps { grid-template-columns: 1fr; border-bottom: 1px solid var(--rule); }
+        .steps li, .steps li:first-child, .steps li:last-child { display: grid; grid-template-columns: 1.6em 1fr; align-items: baseline; padding: 7px 0; border-right: 0; border-bottom: 1px solid var(--rule); }
+        .steps li:last-child { border-bottom: 0; }
+        .enter { position: static; background: none; padding-top: 16px; }
+        .foot { justify-content: center; text-align: center; }
+        .comfort { justify-content: center; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .banner h1 path, .banner .hand { animation: none; }
+        #enter-vr { animation: none !important; }
+      }
+      #landing.still .banner h1 path, #landing.still .banner .hand { animation: none; }
+      #landing.still #enter-vr { animation: none; }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BgOFrTkd.js"></script>
+  </head>
+  <body>
+    <div id="scene-container"></div>
+    <div id="landing">
+      <main class="sheet">
+        <p class="mast">The Daily Square</p>
+        <p class="dateline"><span>Late edition</span><b>The Crash of 2008 · Day One</b><span>Rain all day</span></p>
+        <div class="banner">
+          <h1 aria-label="Run on the banks, struck out in red ink.">
+            Run on the Banks
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <path stroke-width="6" d="M1 54C16 50 31 56 48 51C64 47 82 52 99 47" />
+              <path stroke-width="4" d="M98 57C80 59 60 54 42 58C28 61 14 57 3 60" />
+            </svg>
+          </h1>
+          <p class="hand"><u>Not this</u><br /> <u>time</u></p>
+        </div>
+        <p class="deck">Four words can stop the 2008 crisis. Find them before nightfall.</p>
+        <div class="grid">
+          <div>
+            <figure>
+              <div class="photo">
+                <img src="./v2/giris/front-page.jpg" width="1152" height="648" alt="The Prime Minister at the lectern on the bank steps, a red parrot on his shoulder." />
+                <div class="you" aria-hidden="true">
+                  <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M54 4C24 2 3 24 4 52C5 82 28 98 54 96C82 94 98 72 96 46C94 20 72 4 44 7" /></svg>
+                  <span>you</span>
+                </div>
+              </div>
+              <figcaption>The Prime Minister on the bank steps this morning, his parrot on his shoulder. <b>The parrot is you.</b></figcaption>
+            </figure>
+            <ol class="steps">
+              <li>Learn a word in a memory.</li>
+              <li>Bring it to the Prime Minister's ear.</li>
+              <li class="win">Every window still lit at nightfall is a home you saved.</li>
+            </ol>
+          </div>
+          <div class="story">
+            <h2>Repeat After Me</h2>
+            <p class="byline">By our city desk</p>
+            <p class="body">Queues reached around the square before dawn. Doors are chained. The crowd wants one sentence from the Prime Minister, and he has never once found it on his own.</p>
+            <p class="body">What he has is a parrot. Find four words in four memories, carry each one to his ear, and <b>rewrite today's front page.</b></p>
+            <div class="markets">
+              <h3>Markets at the open</h3>
+              <dl>
+                <dt>Bail</dt><dd class="down">▼ 7.00</dd>
+                <dt>Bread</dt><dd class="down">▼ 33.00</dd>
+                <dt>Savings</dt><dd class="down">▼ 12.4</dd>
+                <dt>Homes</dt><dd class="lit">lights on</dd>
+              </dl>
+            </div>
+            <div class="enter">
+              <button id="enter-vr" type="button" data-state="loading" disabled>Loading…</button>
+              <p class="under">Seated · Just your hands · About 12 minutes</p>
+              <small id="landing-note">Controllers work too: the trigger pinches.</small>
+            </div>
+          </div>
+        </div>
+        <footer class="foot">
+          <div class="comfort">
+            <label><input type="checkbox" id="captions-on" checked /> English captions</label>
+            <label><input type="checkbox" id="larger-captions" /> Larger captions</label>
+            <label><input type="checkbox" id="less-motion" /> Less motion</label>
+          </div>
+          <a href="credits-v2.html">Credits</a>
+        </footer>
+      </main>
+    </div>
+    <script>
+      /* The start page's small wiring: the stamp says where the page is, and the ink is already dry when motion is not wanted. */
+      (() => {
+        const landing = document.getElementById('landing');
+        const enter = document.getElementById('enter-vr');
+        const less = document.getElementById('less-motion');
+        if (landing == null || enter == null) return;
+        // Loading, ready, or no headset here.
+        const state = () => {
+          enter.dataset.state = !enter.disabled ? 'ready' : /^Loading/.test(enter.textContent) ? 'loading' : 'blocked';
+        };
+        new MutationObserver(state).observe(enter, { attributes: true, attributeFilter: ['disabled'], childList: true, characterData: true, subtree: true });
+        state();
+        // Less motion, from the last visit or ticked now.
+        let stored = false;
+        try {
+          stored = localStorage.getItem('every-window-lit.less-motion') === 'on';
+        } catch {
+          // No storage: as the box says.
+        }
+        const still = () => landing.classList.toggle('still', stored || (less != null && less.checked));
+        if (less != null) {
+          less.addEventListener('change', () => {
+            stored = false;
+            still();
+          });
+        }
+        still();
+      })();
+    </script>
+  </body>
+</html>
